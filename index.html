@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+        <link href='/assets/styles/main.css?v=2' rel='stylesheet' type='text/css'>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body class="gamers-advertisement">
+        <span class="watermark">WWW.GAMERS.TM</span>
+        <div class="event-container">
+            <div class="countdown">
+                <img class="" src="/assets/images/freedom.png" />
+                <div class="coming-soon">
+                    <span class="coming -block">COMING</span>
+                    <span class="soon -block">SOON</span>
+                </div>
+                <div class="timer">
+                    <div class="secret -inline">
+                        <span class="-block">秘密</span>
+                        <span class="-block">倒數</span>
+                    </div>
+                    <div class="days -inline -open">
+                        <span id="days-left">10</span>
+                    </div>
+                    <div class="label-days -inline">
+                        <span>天</span>
+                    </div>
+                    <div class="time">
+                        <span id="hours-left" class="-inline -open">
+                            03
+                        </span>
+                        <span class="-inline label-countdown">時</span>
+                        <span id="minutes-left" class="-inline -open">
+                            35
+                        </span>
+                        <span class="-inline label-countdown">分</span>
+                        <span id="seconds-left" class="-inline -open">
+                            40
+                        </span>
+                        <span class="-inline label-countdown">秒</span>
+                    </div>
+                </div>
+            </div>
+            <div class="title">
+                <img src="/assets/images/glow.png" />
+            </div>
+            <div class="videos">
+                <div class="-inline video" onClick="show_video(this);">
+                    <img src="/assets/images/playbutton.png" class="overlay" />
+                    <img class="video_marker" data-videoId="WSGIOyu9tMo" src="https://i.ytimg.com/vi/WSGIOyu9tMo/mqdefault.jpg">
+                </div>
+                <div class="-inline video" onClick="show_video(this);">
+                    <img src="/assets/images/playbutton.png" class="overlay" />
+                    <img class="video_marker" data-videoId="14KLtUF7UtU" src="https://i.ytimg.com/vi/14KLtUF7UtU/mqdefault.jpg">
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/assets/scripts/countdown.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment-with-locales.min.js"></script>
+        <script type="text/javascript">
+            var pad_string = function(original) {
+                    var str = "" + original,
+                    pad = "00";
+
+                    return pad.substring(0, pad.length - str.length) + str;
+                },
+
+                show_video = function(context) {
+                    var video = context.getElementsByClassName('video_marker')[0].dataset.videoid;
+
+                    document.getElementsByClassName('event-container')[0].style.display = 'none';
+                };
+
+            setInterval(function(){
+                span = countdown(
+                    moment(),
+                    moment('2015-04-25', ["YYYY-MM-DD"]).zone('+0800'),
+                    null,
+                    null,
+                    0);
+
+                document.getElementById('days-left').innerHTML = pad_string(span.days);
+                document.getElementById('hours-left').innerHTML = pad_string(span.hours);
+                document.getElementById('minutes-left').innerHTML = pad_string(span.minutes);
+                document.getElementById('seconds-left').innerHTML = pad_string(span.seconds);
+            }, 1000);
+        </script>
+    </body>
+</html>
